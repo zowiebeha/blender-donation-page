@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./main.js"></script>
+
+    <title></title>
+</head>
+
+<body>
+    <main>
+        <!-- can the heading of this hero be nested in another <article>? -->
+        <section>
+            <article id="hero">
+                <article id="hero-left">
+                    <h1>Give Back to Blender</h1>
+                    <p>
+                        If every active user contributed $5 this month, Blender would be funded for the entire year 2026.
+                    </p>
+                    <p>
+                        Every donation counts. Thank you!
+                    </p>
+                </article>
+
+                <!-- todo: learn about how radio buttons work, @font-face how it works with  -->
+                <!--
+                    recreate the "Give Back to Blender" donation widget from: 
+
+                    * https://web.archive.org/web/20251208232947/https://www.blender.org/support/tutorials/
+                    * https://www.blender.org/support/tutorials/
+                -->
+
+                <form id="donation-card-form">
+                    <fieldset class="frequency-chooser">
+                        <legend class="sr-only">Choose your donation frequency:</legend>
+
+                        <label>
+                            <input type="radio" checked name="donation-frequency" value="monthly">
+                            Monthly
+                        </label>
+                        <label>
+                            <input type="radio" name="donation-frequency" value="one-time">
+                            One-time
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="amount-chooser">
+                        <legend class="sr-only">Choose your amount:</legend>
+
+                        <label>
+                            <span class="currency-symbol">€</span>
+                            <span class="amount">5</span>
+                            <input type="radio" checked name="amount" value="5">
+                        </label>
+                        <label>
+                            <span class="currency-symbol">€</span>
+                            <span class="amount">25</span>
+                            <input type="radio" checked name="amount" value="5">
+                        </label>
+                        <label>
+                            <span class="currency-symbol">€</span>
+                            <span class="amount">50</span>
+                            <input type="radio" checked name="amount" value="5">
+                        </label>
+                        <label>
+                            <span class="currency-symbol">€</span>
+                            <span class="amount">100</span>
+                            <input type="radio" checked name="amount" value="5">
+                        </label>
+                        <label>
+                            <span class="currency-symbol">€</span>
+                            <span class="amount">250</span>
+                            <input type="radio" checked name="amount" value="5">
+                        </label>
+                        <label>
+                            <span class="currency-symbol">€</span>
+                            <span class="amount">500</span>
+                            <input type="radio" checked name="amount" value="5">
+                        </label>
+                    </fieldset>
+
+                    <div class="one-time-donation-frequency-message">
+                        <p>
+                            Donate, just <span class="text-bold">once</span> </p>
+                    </div>
+                    <div class="monthly-donation-frequency-message">
+                        <p>
+                            Become a <span class="text-bold">Gold</span> member </p>
+
+                        <div class="benefit-section">
+                            <img class="blender-icon" src="./img/badge_devfund_gold.png"
+                                alt="golden hexagon with the Blender logo in the center">
+                            <p class="sr-only">Benefits:</p>
+                            <ul class="benefits-list">
+                                <li>Gold membership badge.</li>
+                                <li>Name on website.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <select name="currency-locale">
+                        <option value="euro">EURO</option>
+                        <option value="usd">USD</option>
+                    </select>
+                </form>
+
+            </article>
+        </section>
+        
+        <section class="latest-activity">
+            <h2>Latest Activity</h2>
+            
+        </section>
+        
+        <!-- <div class="container">
+        <div class="item"></div>
+        </div> -->
+    </main>
+</body>
+
+</html>

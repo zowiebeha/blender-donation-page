@@ -1,0 +1,235 @@
+/*=======
+Blocking font imports
+========= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+/* ^ use a link to Google's font server in production, or to a locally hosted font instead in order to download the file to the client's computer.. */
+
+/*=======
+Global Variables
+========= */
+
+:root {
+    --color-blue: rgb(0, 153, 255);
+    --color-grey: rgb(76, 77, 82);
+}
+
+/*=======
+Resets
+========= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Oxygen, Ubuntu, Cantarell, "Open Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    /*
+    Consider the a11y implications of altering a standard selection color & background-color for aesthetics:
+    * https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::selection#accessibility
+  */
+    ::selection {
+        background-color: var(--color-blue);
+        color: hsl(213, 9%, 17%);
+    }
+}
+
+h1,
+p {
+    color: rgb(233, 234, 237);
+}
+
+body {
+    background: rgb(242, 242, 243);
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 4rem;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+/*=======
+Components
+========= */
+
+#hero {
+    background-color: hsl(254deg, 50%, 13%) hsl(254deg, 50%, 13%);
+    background-image: linear-gradient(#202327, hsl(254deg, 50%, 13%));
+    
+    display: flex;
+    justify-content: center;
+    padding: 4rem 2rem;
+
+    #hero-left {
+        width: 30rem;
+        /*       display: grid; */
+    }
+}
+
+
+#donation-card-form {
+    margin: 2rem;
+    margin-top: 0;
+    background: rgb(234, 237, 240, .9);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 34rem;
+
+    display: grid;
+    gap: 1rem;
+    font-weight: 500;
+
+    label {
+        text-align: center;
+        border-radius: .25rem;
+        padding: .5rem;
+
+        /* disable selection of label TextNodes */
+        user-select: none;
+
+        transition: .25s background, .25s border-color, .25s color, .25s scale;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:active {
+            scale: .975;
+        }
+    }
+
+    .frequency-chooser {
+        display: flex;
+        gap: .5rem;
+        background: rgb(234, 237, 240);
+        border-radius: .5rem;
+        border: none;
+        /* remove fieldset border */
+        padding: .5rem;
+
+        label {
+            flex-grow: 1;
+
+            &:has(input:not(:checked)) {
+                color: rgb(0, 153, 255);
+
+                &:hover {
+                    background: rgba(0, 153, 255, 0.2);
+                }
+            }
+
+            &:has(input:checked) {
+                color: white;
+                background: var(--color-blue);
+            }
+        }
+
+        input[name="donation-frequency"] {
+            /* Hides the control to allow styling (but we're just styling the label to make it a control according to our design style) */
+            appearance: none;
+        }
+    }
+
+    .amount-chooser {
+        /* better to do grid than a 1/3 flex basis with gap subtracted. */
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: .5rem;
+        border: none;
+        /* remove fieldset border */
+
+        label {
+            border: 2px solid var(--color-grey);
+            color: var(--color-grey);
+        }
+
+        label:has(input:checked) {
+            border-color: transparent;
+            background: var(--color-blue);
+            color: white;
+        }
+
+        label:not(:has(input:checked)) {
+            &:hover {
+                border-color: var(--color-blue);
+                color: var(--color-blue);
+            }
+        }
+
+        input[name="amount"] {
+            /* Hides the control to allow styling (but we're just styling the label to make it a control according to our design style) */
+            appearance: none;
+        }
+    }
+
+    p {
+        color: var(--color-grey);
+    }
+
+    /* Hide message unless user selected the option that will cause it to show */
+    .monthly-donation-frequency-message {
+        display: none;
+        
+        .benefit-section {
+            .blender-icon {
+                width: 2.5rem;
+                aspect-ratio: 1/1;
+            }
+        }
+    }
+
+    .one-time-donation-frequency-message {
+        display: none;
+    }
+
+    &:has(.frequency-chooser input[value="monthly"]:checked) .monthly-donation-frequency-message {
+        display: block;
+    }
+
+    &:has(.frequency-chooser input[value="one-time"]:checked) .one-time-donation-frequency-message {
+        display: block;
+    }
+}
+
+.latest-activity {
+    padding-top: 2rem;
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+}
+
+
+.container {
+    /*   container's auto width doesn't fit to its contents once an item is placed. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+    height: 2rem;
+
+    .item {
+        background: yellow;
+        height: 1rem;
+        width: 1rem;
+    }
+}
+
+/*=======
+Utilities
+========= */
+
+.text-bold {
+    font-weight: bold;
+}
+
+.sr-only {
+    position: absolute;
+    left: -200vw;
+}
