@@ -111,7 +111,12 @@
                     </div>
 
                     <!-- should this be required? I think so. how to conform to the placeholder label option requirement? -->
-                    <!-- size is the answer. but perhaps its an oversight in the spec, since I don't also have `multiple` enabled? what does size do without `multiple`? -->
+                    <!-- size is the answer.
+                         [question]: what does size do without `multiple`?
+                         [answer]: it makes it appear like multiple, but without the ability to select multiple. 
+                         
+                         [question]: how do I get a required <select> with a default selected non-placeholder option, ideally without a label placeholder? maybe I can visually hide the placeholder option? but it would interact weirdly...
+                      -->
                     <select name="currency-locale" required size="2">
                         <optgroup label="Currency Locale">
                             <option value="euro" selected>EURO</option>
