@@ -47,6 +47,7 @@ body {
 h1 {
     font-weight: 800;
     font-size: 4rem;
+    margin-bottom: 1rem;
 }
 
 p {
@@ -67,7 +68,9 @@ Components
 
     #hero-left {
         width: 30rem;
-        /*       display: grid; */
+        display: grid;
+        gap: 1rem;
+        align-content: start; /* don't make track block lengths expand to fill the free space of the container */
     }
 }
 
@@ -176,9 +179,29 @@ Components
         display: none;
         
         .benefit-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            
+            margin: 1rem 0;
+            
             .blender-icon {
-                width: 2.5rem;
+                width: 3rem;
                 aspect-ratio: 1/1;
+            }
+        }
+        
+        .benefits__item::marker {
+            content: "✓";
+            color: var(--color-grey);
+            font-weight: bold;
+        }
+        .benefits__item {
+            padding-left: 1rem;
+            margin-left: 1rem;
+            
+            p {
+                font-size: 1rem;
             }
         }
     }
@@ -193,6 +216,36 @@ Components
 
     &:has(.frequency-chooser input[value="one-time"]:checked) .one-time-donation-frequency-message {
         display: block;
+    }
+    
+    select[name="currency-locale"] {
+        width: fit-content;
+        justify-self: right;
+        padding: .25rem;
+        border-radius: .5em;
+        background: rgb(234, 237, 240);
+        border-color: rgb(177 177 177);
+        cursor: pointer;
+        color: var(--color-grey);
+        
+        box-shadow: 0 0 2px transparent;
+        
+        transition: .4s box-shadow, .4s background;
+        
+        /* When select widget itself is hovered, excluding its children */
+        &:not(:has(*:hover)):hover {
+            background: red;
+        }
+        
+        /* When drop-down is open */
+        &:open {
+            box-shadow: 0 0 2px rgb(166, 166, 166);
+        }
+        
+        /* when accessibility cursor is over the element (can be the case while opened, which has an undesireable effect by default) */
+        &:focus {
+            outline: none; /* override browser's default outline */
+        }
     }
 }
 

@@ -6,10 +6,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" href="./img/blender-golden-logo.png">
+
     <link rel="stylesheet" href="./style.css">
     <script defer src="./main.js"></script>
 
-    <title></title>
+    <title>Give Back to Blender</title>
 </head>
 
 <body>
@@ -93,20 +95,36 @@
                             Become a <span class="text-bold">Gold</span> member </p>
 
                         <div class="benefit-section">
-                            <img class="blender-icon" src="./img/badge_devfund_gold.png"
+                            <img class="blender-icon" src="./img/blender-golden-logo.png"
                                 alt="golden hexagon with the Blender logo in the center">
+                                
                             <p class="sr-only">Benefits:</p>
                             <ul class="benefits-list">
-                                <li>Gold membership badge.</li>
-                                <li>Name on website.</li>
+                                <li class="benefits__item">
+                                    <p>Gold membership badge.</p>
+                                </li>
+                                <li class="benefits__item">
+                                    <p>Name on website.</p>
+                                </li>
                             </ul>
                         </div>
                     </div>
 
-                    <select name="currency-locale">
-                        <option value="euro">EURO</option>
-                        <option value="usd">USD</option>
+                    <!-- should this be required? I think so. how to conform to the placeholder label option requirement? -->
+                    <!-- size is the answer. but perhaps its an oversight in the spec, since I don't also have `multiple` enabled? what does size do without `multiple`? -->
+                    <select name="currency-locale" required size="2">
+                        <optgroup label="Currency Locale">
+                            <option value="euro" selected>EURO</option>
+                            <option value="usd">USD</option>
+                        </optgroup>
                     </select>
+                    
+                    <!--
+                        Read:
+                            https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/placeholder
+                            https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
+                            https://html.spec.whatwg.org/dev/form-elements.html#placeholder-label-option
+                    -->
                 </form>
 
             </article>
