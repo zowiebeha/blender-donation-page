@@ -59,8 +59,8 @@ p {
     https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-placeholder
 */
 select[required]:not([sizes]) > option:first-child,
-select[required][sizes=1] > option:first-child {
-    font-weight: 600;
+select[required][sizes="1"] > option:first-child {
+    font-weight: bold;
 }
 
 /*=======
