@@ -117,11 +117,12 @@
                          
                          [question]: how do I get a required <select> with a default selected non-placeholder option, ideally without a label placeholder? maybe I can visually hide the placeholder option? but it would interact weirdly...
                       -->
-                    <select name="currency-locale" required size="2">
-                        <optgroup label="Currency Locale">
-                            <option value="euro" selected>EURO</option>
-                            <option value="usd">USD</option>
-                        </optgroup>
+                    <select name="currency-locale" required>
+                        <!-- If a select element has a required attribute specified, does not have a multiple attribute specified, and has a display size of 1, then the select element must have a placeholder label option. -->
+                        <!-- https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element -->
+                        <option value="" disabled>Select a currency locale:</option>
+                        <option value="euro" selected>EURO</option>
+                        <option value="usd">USD</option>
                     </select>
                     
                     <!--
