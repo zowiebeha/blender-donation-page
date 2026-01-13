@@ -227,31 +227,80 @@ Components
         display: block;
     }
     
+    /* Permit override of browser and OS styling */
+    select[name="currency-locale"],
+    select[name="currency-locale"]::picker(select) {
+        appearance: base-select;
+    }
+    
     select[name="currency-locale"] {
-        width: fit-content;
+        /* Classic select button styles */
+        width: 5rem; /* Override browser default which assumes an inline length of the longest inline-lengthed child of the <select> */
         justify-self: right;
-        padding: .25rem;
+        padding: .25rem .5rem;
         border-radius: .5em;
         background: rgb(234, 237, 240);
         border-color: rgb(177 177 177);
         cursor: pointer;
         color: var(--color-grey);
-        
-        box-shadow: 0 0 2px transparent;
-        
+        box-shadow: 0 0 2px transparent; /* allow smooth transition to colored box-shadow */
         transition: .4s box-shadow, .4s background;
         
-        /* When select widget itself is hovered, excluding its children */
-        &:not(:has(*:hover)):hover {
-            background: red;
+        /* Custom select button styles */
+        align-items: center; /* Center custom <select> default flex styling */
+        
+        button:first-child {
+            font-size: .85rem;
+            font-weight: 400;
         }
         
-        /* When drop-down is open */
+        /* hidden from a11y tree by default */
+        &::picker-icon {
+            content: ""; /* disable browser default UTF-8 symbol icon */
+            width: 1rem; /* take up 1rem rather than 100% of flex container cross direction free space, which may change depending on <selectedcontent> nested TextNode length. */
+            height: 100%;
+            background: var(--color-grey);
+            /* use svg alpha as mask to the bg color */
+            mask: url("./img/svg/down-arrow.svg") no-repeat 50% 50%;
+            mask-size: 1rem;
+            
+            transition: .4s rotate;
+        }
+        
+        /* When select drop-down is open */
         &:open {
+            border-color: rgb(177 177 177);
             box-shadow: 0 0 2px rgb(166, 166, 166);
+            
+            /* Custom picker icon */
+            &::picker-icon {
+                rotate: -180deg;
+            }
         }
         
-        /* when accessibility cursor is over the element (can be the case while opened, which has an undesireable effect by default) */
+        /* When select widget itself is hovered, excluding its children */
+        /*
+            Broken to due browser's very tight coupling to the OS / browser defaults.
+            Do the following to opt-out:
+               * https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
+        */
+        /*  *.*. code deleted *.*.  */
+        
+        &::picker(select) {
+            border-radius: .5em;
+            background: rgb(234, 237, 240);
+            border-color: rgb(177 177 177);
+            padding: .5rem;
+            
+            transition: .4s background;
+                
+            /* why does this not work? */
+            &:hover {
+                background: blue;
+            }
+        }
+        
+        /* When accessibility cursor is over the element (can be the case while opened due to a click, which has an undesireable effect by default) */
         &:focus {
             outline: none; /* override browser's default outline */
         }
