@@ -1,11 +1,4 @@
 /*=======
-Blocking font imports
-========= */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-/* ^ use a link to Google's font server in production, or to a locally hosted font instead in order to download the file to the client's computer.. */
-
-/*=======
 Global Variables
 ========= */
 
@@ -290,7 +283,7 @@ Components
             border-radius: .5em;
             background: rgb(234, 237, 240);
             border-color: rgb(177 177 177);
-            padding: .5rem;
+            padding: .5rem 0;
             
             transition: .4s background;
                 
@@ -298,6 +291,28 @@ Components
             &:hover {
                 background: blue;
             }
+        }
+        
+        option {
+            padding: .25rem .25rem;
+            
+            /* Disable browser defaults for custom <select>'s required first <option> placeholder text */
+            &[value=""] {
+                display: block;
+                text-align: left;
+            }
+            
+            /* Don't color the placeholder <option> upon hover */
+            &:not(:first-of-type):hover {
+                background: rgb(200, 201, 201);
+            }
+            
+            /* [selected] yields erroneous visuals when we opt-in to custom selects */
+            &:checked {
+                background: rgb(227, 227, 227);
+            }
+            
+            transition: .4s background;
         }
         
         /* When accessibility cursor is over the element (can be the case while opened due to a click, which has an undesireable effect by default) */
